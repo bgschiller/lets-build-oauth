@@ -1,0 +1,15 @@
+{
+  "name": "lets-build-oauth",
+  "version": "1.0.0",
+  "description": "Let's build OAuth presentation",
+  "main": "index.js",
+  "dependencies": {
+    "mdx-deck": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "mdx-deck lets-build-oauth.mdx"
+  },
+  "author": "Brian Schiller",
+  "license": "MIT"
+}
