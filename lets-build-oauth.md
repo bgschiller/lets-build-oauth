@@ -139,3 +139,20 @@ Upon receiving a an authorization code, check if the logged-in user was truly th
 ![](./images/oauth_with_state.svg)
 
 Bonus: you can record other information here too. For example, maybe you support logging in with Google, FB, and Twitter. When you get an authorization code, how do you know which provider gave it to you? Embed the name of the provider when you first start the flow.
+
+### How I often build state
+
+```
+payload = JSON.stringify({
+  issued_at: Date.now(),
+  user_id: session.user_id,
+  login_with: 'twitter',
+});
+
+signature = hmac(SECRET_KEY, payload);
+
+state = (
+  urlSafeBase64(payload) + '.' +
+  urlSafeBase64(signature)
+);
+```

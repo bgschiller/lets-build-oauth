@@ -1,15 +1,23 @@
 {
-  "name": "lets-build-oauth",
-  "version": "1.0.0",
-  "description": "Let's build OAuth presentation",
-  "main": "index.js",
-  "dependencies": {
-    "mdx-deck": "^1.7.1"
-  },
-  "devDependencies": {},
+  "name": "slides",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "mdx-deck lets-build-oauth.mdx"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
-  "author": "Brian Schiller",
-  "license": "MIT"
+  "dependencies": {
+    "eagle.js": "^0.4.1",
+    "vue": "^2.5.17",
+    "vue-visible": "^1.0.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.1",
+    "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.17"
+  }
 }
