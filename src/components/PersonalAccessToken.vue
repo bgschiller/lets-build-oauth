@@ -1,5 +1,5 @@
 <template>
-  <div :steps="6" v-if="active">
+  <div v-if="active">
     <svg class="white-back img-contain" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="397px" preserveAspectRatio="none" version="1.1" viewBox="0 0 568 397" width="568px" zoomAndPan="magnify">
       <defs>
           <filter height="300%" id="f10eb3t7ubu7qp" width="300%" x="-1" y="-1">
@@ -92,5 +92,8 @@ import eagle from 'eagle.js'
 export default {
   name: 'PersonalAccessToken',
   mixins: [eagle.slide],
+  props: {
+    steps: {default: 6},
+  },
 }
 </script>
