@@ -1,6 +1,15 @@
 <template>
   <div v-if="active">
-    <svg class="white-back img-contain" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="397px" preserveAspectRatio="none" version="1.1" viewBox="0 0 568 397" width="568px" zoomAndPan="magnify">
+    <svg
+      class="white-back img-contain"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      contentScriptType="application/ecmascript"
+      contentStyleType="text/css"
+      version="1.1"
+      viewBox="0 0 568 397"
+      zoomAndPan="magnify"
+    >
       <defs>
           <filter height="300%" id="f10eb3t7ubu7qp" width="300%" x="-1" y="-1">
             <feGaussianBlur result="blurOut" stdDeviation="2.0" />

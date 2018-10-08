@@ -162,6 +162,24 @@
       </slide>
 
       <PersonalAccessToken />
+
+      <slide :steps="4">
+        <h2>Tell him yourself!</h2>
+        <span v-if="isParent">
+          What would it look like ... talk amongst themselves rather than making the user mediate it.
+        </span>
+        <ul class="center-list">
+          <li v-visible="step>=2">TravisCI → GitHub: "I need these scopes"</li>
+          <li v-visible="step>=3">GitHub → User: "Do you trust TravisCI?"</li>
+          <li v-visible="step>=4">GitHub → TravisCI: "Here's a token"</li>
+        </ul>
+        <span v-if="isParent">
+          Usually we do first and last w/ HTTP redirect and query params.
+          Here's how that might look.
+        </span>
+      </slide>
+
+      <OAuthFirstDraft />
     </div>
   </div>
 </template>
@@ -169,12 +187,14 @@
 <script>
 import eagle from 'eagle.js'
 import PersonalAccessToken from './components/PersonalAccessToken.vue'
+import OAuthFirstDraft from './components/OAuthFirstDraft.vue'
 
 export default {
   mixins: [eagle.slideshow],
   name: 'app',
   components: {
     PersonalAccessToken,
+    OAuthFirstDraft,
   },
 }
 </script>
@@ -186,8 +206,14 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #fff;
   width: 100%;
+}
+
+.eg-slide {
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/media/skyline_sketch.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 body {
   margin: 0;
@@ -219,6 +245,12 @@ p {
   width: 100vw;
   height: 100vh;
   max-width: 100vw !important;
+}
+svg.img-contain {
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
 }
 
 .left-align {
