@@ -11,6 +11,10 @@ Eagle.slideshow.computed.isParent = function() {
   return !!this.childWindow;
 };
 
+Eagle.slide.computed.isParent = function() {
+  return this.$parent.isParent;
+};
+
 Vue.use(VueVisible);
 Vue.use(Eagle)
 

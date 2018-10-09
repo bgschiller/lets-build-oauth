@@ -180,6 +180,18 @@
       </slide>
 
       <OAuthFirstDraft />
+
+      <slide class="title-only">
+        <h2>Vulnerabilities and Mitigations</h2>
+      </slide>
+
+      <slide class="title-only">
+        <h2>Attack! hijack the request_uri</h2>
+      </slide>
+
+      <OAuthHijackRedirect />
+
+      <PreRegisteredURI />
     </div>
   </div>
 </template>
@@ -188,6 +200,8 @@
 import eagle from 'eagle.js'
 import PersonalAccessToken from './components/PersonalAccessToken.vue'
 import OAuthFirstDraft from './components/OAuthFirstDraft.vue'
+import OAuthHijackRedirect from './components/OAuthHijackRedirect.vue';
+import PreRegisteredURI from './components/PreRegisteredURI.vue';
 
 export default {
   mixins: [eagle.slideshow],
@@ -195,6 +209,8 @@ export default {
   components: {
     PersonalAccessToken,
     OAuthFirstDraft,
+    OAuthHijackRedirect,
+    PreRegisteredURI,
   },
 }
 </script>
@@ -269,5 +285,15 @@ svg.img-contain {
 .white-back {
   background-color: white;
 }
+.speaker-note {
+  color: black;
+  background: wheat;
+  &.absolute-note {
+    position: absolute;
+    bottom: 4px;
+    right: 40px;
+  }
+}
+
 
 </style>
