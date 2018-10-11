@@ -208,6 +208,18 @@
       </slide>
 
       <AuthorizationToAccessExchange />
+
+      <slide class="title-only">
+        <h2>Attack! connect to attacer's account</h2>
+      </slide>
+
+      <CsrfAttack />
+
+      <slide class="title-only">
+        Mitigation: Ensure the logged-in user is originator of request
+      </slide>
+
+      <WithState />
     </div>
   </div>
 </template>
@@ -220,7 +232,8 @@ import OAuthHijackRedirect from './components/OAuthHijackRedirect.vue';
 import PreRegisteredURI from './components/PreRegisteredURI.vue';
 import SniffTokenFromUrl from './components/SniffTokenFromUrl.vue';
 import AuthorizationToAccessExchange from './components/AuthorizationToAccessExchange.vue';
-
+import CsrfAttack from './components/CsrfAttack.vue';
+import WithState from './components/WithState.vue';
 
 export default {
   mixins: [eagle.slideshow],
@@ -231,7 +244,9 @@ export default {
     OAuthHijackRedirect,
     PreRegisteredURI,
     SniffTokenFromUrl,
-    AuthorizationToAccessExchange
+    AuthorizationToAccessExchange,
+    CsrfAttack,
+    WithState,
   },
 }
 </script>
