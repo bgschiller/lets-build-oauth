@@ -191,7 +191,23 @@
 
       <OAuthHijackRedirect />
 
+      <slide class="title-only">
+        <h2>Mitigation: Pre-register with the provider</h2>
+      </slide>
+
       <PreRegisteredURI />
+
+      <slide class="title-only">
+        <h2>Attack! steal token from URL</h2>
+      </slide>
+
+      <SniffTokenFromUrl />
+
+      <slide class="title-only">
+        <h2>Mitigation: make those tokens worthless</h2>
+      </slide>
+
+      <AuthorizationToAccessExchange />
     </div>
   </div>
 </template>
@@ -202,6 +218,9 @@ import PersonalAccessToken from './components/PersonalAccessToken.vue'
 import OAuthFirstDraft from './components/OAuthFirstDraft.vue'
 import OAuthHijackRedirect from './components/OAuthHijackRedirect.vue';
 import PreRegisteredURI from './components/PreRegisteredURI.vue';
+import SniffTokenFromUrl from './components/SniffTokenFromUrl.vue';
+import AuthorizationToAccessExchange from './components/AuthorizationToAccessExchange.vue';
+
 
 export default {
   mixins: [eagle.slideshow],
@@ -211,6 +230,8 @@ export default {
     OAuthFirstDraft,
     OAuthHijackRedirect,
     PreRegisteredURI,
+    SniffTokenFromUrl,
+    AuthorizationToAccessExchange
   },
 }
 </script>
