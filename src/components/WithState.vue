@@ -9,6 +9,7 @@
       version="1.1"
       viewBox="0 0 716 897"
       zoomAndPan="magnify"
+      :key="filterChoice"
     >
       <defs>
         <filter height="300%" id="f1uy9kxh8zrl8n" width="300%" x="-1" y="-1">

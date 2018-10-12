@@ -8,7 +8,9 @@
       contentStyleType="text/css"
       version="1.1"
       viewBox="0 0 716 663"
-      zoomAndPan="magnify">
+      zoomAndPan="magnify"
+      :key="filterChoice"
+    >
       <defs>
         <filter height="300%" id="f1k9w0wsmhfwo8" width="300%" x="-1" y="-1">
           <feGaussianBlur result="blurOut" stdDeviation="2.0" />
