@@ -53,14 +53,14 @@
           <span class="small">Share your password</span>
           Please?
         </h2>
-        <video src="/media/pretty-please.mp4" autoplay loop></video>
+        <video src="/lets-build-oauth/media/pretty-please.mp4" autoplay loop></video>
       </slide>
 
       <slide>
-        <div class="img-contain" style="background-image: url(/media/mint.png)" />
+        <div class="img-contain" style="background-image: url(/lets-build-oauth/media/mint.png)" />
       </slide>
       <slide>
-        <div class="img-contain" style="background-image: url(/media/yelp.png)" />
+        <div class="img-contain" style="background-image: url(/lets-build-oauth/media/yelp.png)" />
         <span v-if="isParent">circa 2008, to be fair</span>
       </slide>
 
@@ -107,15 +107,15 @@
 
       <slide>
         <h2>Personal access tokens</h2>
-        <video src="/media/lucille_wink.mp4" autoplay loop></video>
+        <video src="/lets-build-oauth/media/lucille_wink.mp4" autoplay loop></video>
       </slide>
 
       <slide>
-        <div class="img-contain" style="background-image: url(/media/personal_access_token_mockup.png)" />
+        <div class="img-contain" style="background-image: url(/lets-build-oauth/media/personal_access_token_mockup.png)" />
       </slide>
 
       <slide>
-        <div class="img-contain" style="background-image: url(/media/homebrew.png)" />
+        <div class="img-contain" style="background-image: url(/lets-build-oauth/media/homebrew.png)" />
       </slide>
 
       <slide>
@@ -263,7 +263,7 @@ export default {
 }
 
 .eg-slide {
-  // background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/media/skyline_sketch.jpg);
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/lets-build-oauth/media/skyline_sketch.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
