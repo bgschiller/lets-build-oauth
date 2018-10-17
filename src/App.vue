@@ -210,7 +210,7 @@
       <AuthorizationToAccessExchange />
 
       <slide class="title-only">
-        <h2>Attack! connect to attacer's account</h2>
+        <h2>Attack! connect to attacker's account</h2>
       </slide>
 
       <CsrfAttack />
@@ -220,6 +220,30 @@
       </slide>
 
       <WithState />
+
+      <slide :steps="6">
+        <h2>How to build the state param</h2>
+        <ul v-if="step < 6" class="center-list">
+          <li v-visible="step >= 2">Identify the user</li>
+          <li v-visible="step >= 3">Timestamped</li>
+          <li v-visible="step >= 4">Bonus: which service?</li>
+          <li v-visible="step >= 5">Signed</li>
+        </ul>
+        <eg-code-block v-if="step>= 6" lang="js">
+payload = JSON.stringify({
+  issued_at: Date.now(),
+  user_id: session.user_id,
+  login_with: 'twitter',
+});
+
+signature = hmac(SECRET_KEY, payload);
+
+state = (
+  urlSafeBase64(payload) + '.' +
+  urlSafeBase64(signature)
+);
+        </eg-code-block>
+      </slide>
     </div>
   </div>
 </template>
@@ -247,6 +271,27 @@ export default {
     AuthorizationToAccessExchange,
     CsrfAttack,
     WithState,
+  },
+  methods: {
+     updateSlides: function () {
+      this.currentSlideIndex = +this.$route.params.slide
+      const step = +this.$route.params.step;
+      console.log('saving off step', step);
+      this.$nextTick(() => {
+        this.step = step;
+        console.log('set step', step);
+      })
+    },
+    updateURL: function () {
+      this.$router.push(`/${this.currentSlideIndex}/${this.step}`)
+    }
+  },
+  mounted() {
+    this.updateSlides();
+  },
+  watch: {
+    step: 'updateURL',
+    currentSlideIndex: 'updateURL',
   },
 }
 </script>
