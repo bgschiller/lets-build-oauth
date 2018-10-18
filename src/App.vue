@@ -13,6 +13,10 @@
           Speaker notes appear here
         </span>
       </slide>
+      <slide class="title-only">
+        <p>slides at:</p>
+        <h2>brianschiller.com/lets-build-oauth/</h2>
+      </slide>
 
       <slide :steps="3">
         <h2>Authentication vs Authorization</h2>
@@ -23,6 +27,23 @@
         <p class="nota-buena" v-if="step >= 3">
           nb: Authorization HTTP header is really about authentication.
         </p>
+      </slide>
+
+      <slide class="title-only">
+        <h2>A bit of history</h2>
+      </slide>
+
+      <slide :steps="2" class="vertical-center">
+        <div class="blockquote">
+          I can no longer be associated with the OAuth 2.0 standard.
+          <div class="attribution">
+            &ndash;Eran Hammer
+          </div>
+          <div class="attribution" v-visible="step >= 2">
+            (The creator of OAuth)
+          </div>
+
+        </div>
       </slide>
 
       <slide steps="2">
@@ -276,10 +297,8 @@ export default {
      updateSlides: function () {
       this.currentSlideIndex = +this.$route.params.slide
       const step = +this.$route.params.step;
-      console.log('saving off step', step);
       this.$nextTick(() => {
         this.step = step;
-        console.log('set step', step);
       })
     },
     updateURL: function () {
@@ -294,18 +313,38 @@ export default {
     currentSlideIndex: 'updateURL',
   },
 }
+
 </script>
 
 <style lang="scss">
-
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #fff;
+  color: #000;
   width: 100%;
 }
+#app .eg-slideshow {
+  background-color: white;
+}
+
+.blockquote {
+  justify-self: center;
+  .attribution {
+    width: 100%;
+    text-align: right;
+  }
+}
+.vertical-center {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  height: 100vh;
+}
+
 
 .eg-slide {
   // background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/lets-build-oauth/media/skyline_sketch.jpg);

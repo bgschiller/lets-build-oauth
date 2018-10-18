@@ -5,6 +5,7 @@ import hljs from 'highlight.js/lib/highlight';
 import javascript from 'highlight.js/lib/languages/javascript';
 import App from './App.vue'
 import 'eagle.js/dist/eagle.css'
+
 import router from './router'
 
 hljs.registerLanguage('javascript', javascript);
