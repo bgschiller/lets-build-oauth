@@ -65,8 +65,37 @@
         </div>
       </slide>
 
-      <slide>
-        <h2>So, let's build OAuth from scratch</h2>
+      <slide class="title-only">
+        <h2>Cast of Characters</h2>
+      </slide>
+
+      <slide class="vertical-center">
+        <h2>Alice</h2>
+        <img src="/lets-build-oauth/media/alice.png">
+      </slide>
+
+      <slide class="vertical-center">
+        <h2>TravisCI</h2>
+        <img src="/lets-build-oauth/media/travisci.png">
+      </slide>
+
+      <slide class="vertical-center">
+        <h2>GitHub</h2>
+        <img src="/lets-build-oauth/media/octocat.png">
+      </slide>
+
+      <slide class="vertical-center">
+        <h2>Attacker</h2>
+        <img src="/lets-build-oauth/media/sneakytom.jpg">
+      </slide>
+
+      <slide class="vertical-center">
+        <h2>Google</h2>
+        <img src="/lets-build-oauth/media/google-logo.png">
+      </slide>
+
+      <slide :steps="2">
+        <h2>So, <span v-visible="step >= 2">let's build OAuth from scratch</span></h2>
       </slide>
 
       <slide>
@@ -265,6 +294,33 @@ state = (
 );
         </eg-code-block>
       </slide>
+
+      <slide>
+        <h2>References</h2>
+        <ul class="center-list">
+          <li><a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">
+            www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2
+          </a></li>
+          <li><a href="https://hueniverse.com/introducing-oauth-2-0-b5681da60ce2">
+            hueniverse.com/introducing-oauth-2-0-b5681da60ce2
+          </a></li>
+          <li><a href="https://hueniverse.com/oauth-2-0-and-the-road-to-hell-8eec45921529">
+            hueniverse.com/oauth-2-0-and-the-road-to-hell-8eec45921529
+          </a></li>
+          <li><a href="https://ict.ken.be/oauth-20-vocabulary">
+            ict.ken.be/oauth-20-vocabulary
+          </a></li>
+          <li><a href="https://auth0.com/blog/everything-you-wanted-to-know-about-oauth-2-but-were-too-afraid-to-ask/">
+            auth0.com/blog/everything-you-wanted-to-know-about-oauth-2-but-were-too-afraid-to-ask/
+          </a></li>
+          <li><a href="https://developer.okta.com/blog/2018/04/10/oauth-authorization-code-grant-type">
+            developer.okta.com/blog/2018/04/10/oauth-authorization-code-grant-type
+          </a></li>
+          <li><a href="https://dhavalkapil.com/blogs/Attacking-the-OAuth-Protocol/">
+            dhavalkapil.com/blogs/Attacking-the-OAuth-Protocol/
+          </a></li>
+        </ul>
+      </slide>
     </div>
   </div>
 </template>
@@ -279,6 +335,7 @@ import SniffTokenFromUrl from './components/SniffTokenFromUrl.vue';
 import AuthorizationToAccessExchange from './components/AuthorizationToAccessExchange.vue';
 import CsrfAttack from './components/CsrfAttack.vue';
 import WithState from './components/WithState.vue';
+import AllTogetherNow from './components/AllTogetherNow.vue';
 
 export default {
   mixins: [eagle.slideshow],
@@ -292,6 +349,7 @@ export default {
     AuthorizationToAccessExchange,
     CsrfAttack,
     WithState,
+    AllTogetherNow,
   },
   methods: {
      updateSlides: function () {
