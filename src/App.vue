@@ -1,14 +1,19 @@
 <template>
   <div id="app">
     <div class="eg-slideshow">
-      <slide>
+      <slide :steps="2">
         <h1>Let's Build OAuth</h1>
-        <p class="pullquote">
+        <div class="pullquote" v-visible="step >= 2">
           "That which I cannot create, I do not understand"
-        </p>
-        <div class="attribution">
-          &ndash;Richard Feynman
+          <div class="attribution">
+            &ndash;Richard Feynman
+          </div>
         </div>
+        <ul class="unbulleted center-list left-align">
+          <li class="who-am-i">Brian Schiller</li>
+          <li>@bgschiller</li>
+          <li>brianschiller.com</li>
+        </ul>
         <span v-if="isParent">
           Speaker notes appear here
         </span>
@@ -18,13 +23,13 @@
         <h2>brianschiller.com/lets-build-oauth/</h2>
       </slide>
 
-      <slide :steps="3">
+      <slide :steps="4">
         <h2>Authentication vs Authorization</h2>
         <ul class="unbulleted left-align">
-          <li v-if="step >= 1"><strong>Authentication:</strong> This is who I am</li>
-          <li v-if="step >= 2"><strong>Authorization:</strong> I am allowed to perform this action/see this data/etc</li>
+          <li v-if="step >= 2"><strong>Authentication:</strong> This is who I am</li>
+          <li v-if="step >= 3"><strong>Authorization:</strong> I am allowed to perform this action/see this data/etc</li>
         </ul>
-        <p class="nota-buena" v-if="step >= 3">
+        <p class="nota-buena" v-if="step >= 4">
           nb: Authorization HTTP header is really about authentication.
         </p>
       </slide>
@@ -46,21 +51,18 @@
         </div>
       </slide>
 
-      <slide steps="2">
+      <slide steps="3">
         <h2>Oauth is for...</h2>
-        <div v-if="step == 1">
+        <div v-if="step <= 2" v-visible="step == 2">
           <h3>Authentication</h3>
           <p>
             eg, Login w/ Twitter says "I am the owner of the @bgschiller handle, and you can trust that b/c twitter says so"
           </p>
         </div>
-        <div v-if="step == 2">
+        <div v-if="step == 3">
           <h3>Delegated Authorization</h3>
           <p>
             "I give permission for HootSuite to post tweets on my behalf".
-          </p>
-          <p>
-            You're giving some other entity (a program or website) the authority to act as if they were you.
           </p>
         </div>
       </slide>
@@ -71,27 +73,27 @@
 
       <slide class="vertical-center">
         <h2>Alice</h2>
-        <img src="/lets-build-oauth/media/alice.png">
+        <img class="character" src="/lets-build-oauth/media/alice.png">
       </slide>
 
       <slide class="vertical-center">
         <h2>TravisCI</h2>
-        <img src="/lets-build-oauth/media/travisci.png">
+        <img class="character" src="/lets-build-oauth/media/travisci.png">
       </slide>
 
       <slide class="vertical-center">
         <h2>GitHub</h2>
-        <img src="/lets-build-oauth/media/octocat.png">
+        <img class="character" src="/lets-build-oauth/media/octocat.png">
       </slide>
 
       <slide class="vertical-center">
         <h2>Attacker</h2>
-        <img src="/lets-build-oauth/media/sneakytom.jpg">
+        <img class="character" src="/lets-build-oauth/media/attacker.jpg">
       </slide>
 
       <slide class="vertical-center">
         <h2>Google</h2>
-        <img src="/lets-build-oauth/media/google-logo.png">
+        <img class="character" src="/lets-build-oauth/media/google-logo.png">
       </slide>
 
       <slide :steps="2">
@@ -272,28 +274,32 @@
       <WithState />
 
       <slide :steps="6">
-        <h2>How to build the state param</h2>
+        <h2 class="smaller-header">How to build the state param</h2>
         <ul v-if="step < 6" class="center-list">
           <li v-visible="step >= 2">Identify the user</li>
           <li v-visible="step >= 3">Timestamped</li>
           <li v-visible="step >= 4">Bonus: which service?</li>
           <li v-visible="step >= 5">Signed</li>
         </ul>
-        <eg-code-block v-if="step>= 6" lang="js">
-payload = JSON.stringify({
-  issued_at: Date.now(),
-  user_id: session.user_id,
-  login_with: 'twitter',
-});
+        <div class="code-block">
+          <eg-code-block v-if="step>= 6" lang="javascript">
+  payload = JSON.stringify({
+    issued_at: Date.now(),
+    user_id: session.user_id,
+    login_with: 'twitter',
+  });
 
-signature = hmac(SECRET_KEY, payload);
+  signature = hmac(SECRET_KEY, payload);
 
-state = (
-  urlSafeBase64(payload) + '.' +
-  urlSafeBase64(signature)
-);
-        </eg-code-block>
+  state = (
+    urlSafeBase64(payload) + '.' +
+    urlSafeBase64(signature)
+  );
+          </eg-code-block>
+        </div>
       </slide>
+
+      <AllTogetherNow />
 
       <slide>
         <h2>References</h2>
@@ -336,6 +342,7 @@ import AuthorizationToAccessExchange from './components/AuthorizationToAccessExc
 import CsrfAttack from './components/CsrfAttack.vue';
 import WithState from './components/WithState.vue';
 import AllTogetherNow from './components/AllTogetherNow.vue';
+import 'highlight.js/styles/vs.css';
 
 export default {
   mixins: [eagle.slideshow],
@@ -350,6 +357,9 @@ export default {
     CsrfAttack,
     WithState,
     AllTogetherNow,
+  },
+  props: {
+    mouseNavigation: { default: false },
   },
   methods: {
      updateSlides: function () {
@@ -426,6 +436,22 @@ p {
   }
 }
 
+.eg-slideshow .smaller-header {
+  font-size: 2em;
+}
+
+
+.code-block {
+  font-size: 2em;
+  margin: 20px auto;
+  width: fit-content;
+  .eg-code-block {
+    width: fit-content;
+  }
+
+}
+
+
 .center-list {
   width: fit-content;
   margin-left: auto;
@@ -473,5 +499,12 @@ svg.img-contain {
   }
 }
 
+.who-am-i {
+  font-weight: bold;
+}
+
+.character {
+  max-height: 70vh;
+}
 
 </style>
